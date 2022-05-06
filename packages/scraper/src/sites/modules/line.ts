@@ -1,15 +1,15 @@
-import { JobListItem, Site } from './site'
-import { request } from '../utils/request'
+import { JobListItem, Site } from '../site'
+import { get } from '../../utils/get'
 import { load } from 'cheerio'
 
 export class Line extends Site {
-  async fetchJobList (): Promise<JobListItem[]> {
+  async fetchJobListPage (): Promise<JobListItem[]> {
     const jobListItems: JobListItem[] = []
 
     const baseUrl = this.baseUrl
     const jobListUrl = this.jobListUrl
 
-    const html = await request(`${baseUrl}${jobListUrl}`)
+    const html = await get(`${baseUrl}${jobListUrl}`)
     const $ = load(html)
 
     $('#container > div > div.job_result > ul > li').each(function () {
@@ -23,8 +23,18 @@ export class Line extends Site {
         field: '',
         employmentType: ''
       }
+
+      jobListItems.push(item)
     })
 
     return jobListItems
+  }
+
+  async fetchJobListPageSize (): Promise<number> {
+    return 1
+  }
+
+  async fetchJobPage (): Promise<JobListItem> {
+    return {} as JobListItem
   }
 }

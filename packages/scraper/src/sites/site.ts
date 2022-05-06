@@ -1,3 +1,4 @@
+
 export interface JobListItem {
   title: string
   url: string
@@ -15,7 +16,9 @@ export abstract class Site {
     this._jobListUrl = jobListUrl
   }
 
-  abstract fetchJobList(): Promise<JobListItem[]>;
+  abstract fetchJobListPage (page?: number): Promise<JobListItem[]>
+  abstract fetchJobListPageSize (): Promise<number>
+  abstract fetchJobPage (): Promise<JobListItem>
 
   protected get baseUrl () {
     return this._baseUrl
