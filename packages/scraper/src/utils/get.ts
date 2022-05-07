@@ -12,6 +12,6 @@ export async function get (url: string) {
 }
 
 export async function post <Result, Params> (url: string, body: Params): Promise<Result>  {
-  const { data } = await instance.post(url)
+  const { data } = await instance.post(url, body)
   return data as Result
 }
