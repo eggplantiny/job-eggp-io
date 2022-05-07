@@ -1,10 +1,13 @@
+import { Nullable } from '../types/base.type'
 
 export interface JobListItem {
   title: string
   url: string
-  location: string
-  field: string
-  employmentType: string
+  location: Nullable<string>
+  company: Nullable<string>
+  field: Nullable<string>
+  employmentType: Nullable<string>
+  keywords: string[]
 }
 
 export abstract class Site {

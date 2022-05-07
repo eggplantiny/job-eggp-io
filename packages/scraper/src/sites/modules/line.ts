@@ -19,9 +19,11 @@ export class Line extends Site {
       const item: JobListItem = {
         title,
         url,
-        location: '',
-        field: '',
-        employmentType: ''
+        company: null,
+        location: null,
+        field: null,
+        employmentType: null,
+        keywords: [],
       }
 
       jobListItems.push(item)
