@@ -6,7 +6,7 @@ const instance = axios.create({
   }
 })
 
-export async function get (url: string) {
+export async function request (url: string) {
   const { data } = await instance.get(url)
   return data
 }

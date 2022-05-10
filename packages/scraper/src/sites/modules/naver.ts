@@ -1,5 +1,5 @@
 import { JobListItem, Site } from '@/sites/site'
-import { post } from '@/utils/get'
+import { post } from '@/utils/request'
 import { Nullable, YN } from '@/types/base.type'
 
 interface NaverSearchParams {

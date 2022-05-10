@@ -1,5 +1,5 @@
 import { JobListItem, Site } from '../site'
-import { get } from '../../utils/get'
+import { request } from '../../utils/request'
 import { load } from 'cheerio'
 
 export class Line extends Site {
@@ -9,7 +9,7 @@ export class Line extends Site {
     const baseUrl = this.baseUrl
     const jobListUrl = this.jobListUrl
 
-    const html = await get(`${baseUrl}${jobListUrl}`)
+    const html = await request(`${baseUrl}${jobListUrl}`)
     const $ = load(html)
 
     $('#container > div > div.job_result > ul > li').each(function () {
